@@ -1,3 +1,5 @@
+import JavaFiles.JavaCode
+
 fun main(args: Array<String>) {
     val game:Game = Game()
     val name:String = "Madrigal"
@@ -6,10 +8,12 @@ fun main(args: Array<String>) {
     var auraIsVisible = isBlessed && healthPoints == 100
     val auraColor = if (auraIsVisible) "Green" else "Red"
     val healthStatus = game.formatHealthStatus(healthPoints,isBlessed)
+    val javaCode : JavaCode = JavaCode();
     println(auraColor)
 
     println("(AuraColor: $auraColor)"+"(Blessed: ${if (isBlessed) "YES" else "NO"})")
     println("$name is in ${healthStatus}")
+    javaCode.helloThere()
     var karma = when(auraColor){
         "Green" -> 5
         "Orange" -> 10

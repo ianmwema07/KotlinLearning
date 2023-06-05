@@ -10,4 +10,6 @@ class Game{
     public fun castFireball(numFireBalls:Int = 2){
         println("A glass of fireball springs to existence {$numFireBalls}")
     }
+
+
 }
