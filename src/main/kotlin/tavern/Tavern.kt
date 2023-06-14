@@ -12,6 +12,7 @@ val uniquePatrons = mutableSetOf<String>()
 val menuList = File("data/tavern-menu-data.txt")
                     .readText()
                     .split("\n")
+val patronGold = mutableMapOf<String, Double>()
 val planets = setOf("Mercury", "Venus", "Earth")
 
 
@@ -23,20 +24,29 @@ fun main(args: Array<String>) {
     println("This is the new patron list $patronList")
     patronList.forEach {
         patron -> println("Good morning $patron")
-        placeOrder(patron, menuList.shuffled().first())
+        placeOrder(patron, menuList
+            .shuffled()
+            .first())
 
     }
+    println("*** Welcome to Taernyl's Folly ***\n\n")
     menuList.forEachIndexed { index, data ->
         var drinkInfo = data.split(',')
-        println("$drinkInfo[1] ..................$drinkInfo[2]")
+         println(drinkInfo[1]+"......................"+drinkInfo[2])
     }
+
+    uniquePatrons.forEach {
+        patronGold[it] = 6.0
+    }
+
     (0..9).forEach {
         val first = patronList.shuffled().first();
         val last = lastName.shuffled().first()
         val name = "$first $last"
         uniquePatrons += name
     }
-    println(uniquePatrons)
+    println(patronGold)
+    println(patronGold["Eli"])
 }
 
 
