@@ -1,10 +1,14 @@
 import JavaFiles.JavaCode
 import player.Player
+import player.Sword
 
 fun main(args: Array<String>) {
     val game:Game = Game()
-
-    val player = Player();
+    val sword = Sword("Exculibar");
+    println("This is the sword ---> ${sword.name}");
+//    sword.name = "Gleipnir";
+//    println("${sword.name}")
+    val player = Player("Madrigal",98,true,true);
     var auraIsVisible = player.isBlessed && player.healthPoints == 100
     val auraColor = if (auraIsVisible) "Green" else "Red"
     val healthStatus = game.formatHealthStatus(player.healthPoints,player.isBlessed)
