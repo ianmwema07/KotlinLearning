@@ -35,5 +35,6 @@ fun main(args: Array<String>) {
     }
 
     game.castFireball(5)
+    game
     println(karma)
 }

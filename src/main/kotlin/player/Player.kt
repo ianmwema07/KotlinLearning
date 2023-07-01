@@ -1,5 +1,6 @@
 package player
 
+import Room.Coordinate
 import java.io.File
 
 class Player(_name: String, _healthPoints: Int, _isBlessed: Boolean, _isImmortal: Boolean) {
@@ -10,6 +11,8 @@ class Player(_name: String, _healthPoints: Int, _isBlessed: Boolean, _isImmortal
     private set(value) {
             field = value.trim()
         }
+
+    var currentPosition = Coordinate(0, 0)
 
     private fun selectHomeTown() = File("data/towns.csv")
         .readText()
