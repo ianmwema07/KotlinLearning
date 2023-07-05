@@ -1,9 +1,10 @@
 package player
 
+import Interfaces.Fightable
 import Room.Coordinate
 import java.io.File
 
-class Player(_name: String, _healthPoints: Int, _isBlessed: Boolean, _isImmortal: Boolean) {
+class Player(_name: String, override var healthPoints: Int, _isBlessed: Boolean, _isImmortal: Boolean) : Fightable {
 
     var homeTown = selectHomeTown();
     var name = _name
@@ -19,7 +20,26 @@ class Player(_name: String, _healthPoints: Int, _isBlessed: Boolean, _isImmortal
         .split(',')
         .first()
 
-    var healthPoints = _healthPoints;
+
+    override var diceCount = 3
+
+    //        get() = TODO("Not yet implemented")
+//        set(value) {}
+    override val diceSides = 6
+//        get() = TODO("Not yet implemented")
+    override val damageRoll: Int
+        get() = TODO("Not yet implemented")
+
+    override fun attack(opponent: Fightable): Int {
+        val damageDealt = if (isBlessed) {
+            damageRoll * 2
+        } else {
+            damageRoll
+        }
+        opponent.healthPoints -= damageDealt
+        return damageDealt
+    }
+
     val isBlessed = _isBlessed;
     private val isImmortal = _isImmortal;
     fun castFireBall(numFireballs: Int=2){
