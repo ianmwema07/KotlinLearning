@@ -40,8 +40,8 @@ fun main(args: Array<String>) {
     }
 
     (0..9).forEach {
-        val first = patronList.shuffled().first();
-        val last = lastName.shuffled().first()
+        val first = patronList.random();
+        val last = lastName.random()
         val name = "$first $last"
         uniquePatrons += name
     }
